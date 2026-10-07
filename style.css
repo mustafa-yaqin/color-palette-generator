@@ -1,0 +1,131 @@
+/* Basic Reset */
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #2b6777, #c8d8e4);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  background-color: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  width: 100%;
+  max-width: 800px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50%;
+  height: 3px;
+  background-color: #52ab98;
+  border-radius: 2px;
+}
+
+#generate-btn {
+  background: linear-gradient(45deg, #2b6777, #52ab98);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+#generate-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(43, 103, 119, 0.35);
+}
+
+#generate-btn:active {
+  transform: translateY(0);
+}
+
+.palette-container {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.color-box {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.color-box:hover {
+  transform: translateY(-5px);
+}
+
+.color {
+  height: 120px;
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+}
+
+.color-info {
+  background-color: #fff;
+  padding: 0.7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.9rem;
+}
+
+.hex-value {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.copy-btn {
+  cursor: pointer;
+  color: #64748b;
+  transition: color 0.2s;
+}
+
+.copy-btn:hover {
+  color: #52ab98;
+}
+
+@media (max-width: 768px) {
+  .palette-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
+
+/* Brand */
+.brand {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  color: #2b6777;
+  margin-bottom: 0.4rem;
+}
