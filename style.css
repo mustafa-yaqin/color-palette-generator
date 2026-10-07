@@ -1,5 +1,5 @@
 /* Basic Reset */
-@import url(https://fonts.googleapis.com/css?family=Poppins:100,100italic,200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,800,800italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,regular,500,600,700,800);
 
 * {
   margin: 0;
@@ -15,6 +15,12 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
+}
+
+#app {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
@@ -46,6 +52,30 @@ h1::after {
   border-radius: 2px;
 }
 
+h3 {
+  color: #444;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.brand {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 4px;
+  color: #2b6777;
+  margin-bottom: 0.4rem;
+}
+
+/* Toolbar */
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
 #generate-btn {
   background: linear-gradient(45deg, #2b6777, #52ab98);
   color: white;
@@ -54,8 +84,8 @@ h1::after {
   border-radius: 50px;
   cursor: pointer;
   font-weight: 500;
-  margin-bottom: 2rem;
   font-size: 1rem;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 #generate-btn:hover {
@@ -67,6 +97,43 @@ h1::after {
   transform: translateY(0);
 }
 
+.select-wrap {
+  font-size: 0.9rem;
+  color: #475569;
+}
+
+.select-wrap select {
+  margin-left: 0.3rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.export-group {
+  margin-left: auto;
+  display: flex;
+  gap: 0.4rem;
+}
+
+.ghost-btn {
+  background: #f2f2f2;
+  border: none;
+  color: #2b6777;
+  padding: 0.5rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.ghost-btn:hover {
+  background: #c8d8e4;
+}
+
+/* Palette */
 .palette-container {
   display: grid;
   gap: 1rem;
@@ -85,9 +152,30 @@ h1::after {
 }
 
 .color {
+  position: relative;
   height: 120px;
   border-bottom: 1px solid #e5e7eb;
   cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.lock-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.color:hover .lock-btn,
+.lock-btn.active {
+  opacity: 1;
 }
 
 .color-info {
@@ -99,9 +187,19 @@ h1::after {
   font-size: 0.9rem;
 }
 
+.color-text {
+  display: flex;
+  flex-direction: column;
+}
+
 .hex-value {
   font-weight: 500;
   letter-spacing: 0.5px;
+}
+
+.hsl-value {
+  font-size: 0.68rem;
+  color: #94a3b8;
 }
 
 .copy-btn {
@@ -114,18 +212,109 @@ h1::after {
   color: #52ab98;
 }
 
+.hint {
+  margin-top: 1.2rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+kbd {
+  background: #f2f2f2;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  padding: 0 6px;
+  font-size: 0.75rem;
+}
+
+/* History */
+.history {
+  margin-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1rem;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.history-header h4 {
+  color: #2b6777;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.link-btn:hover {
+  color: #2b6777;
+}
+
+.history-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.6rem;
+}
+
+.history-item {
+  display: flex;
+  height: 28px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s;
+}
+
+.history-item:hover {
+  transform: scale(1.04);
+}
+
+.history-item span {
+  flex: 1;
+}
+
+.empty {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  background: #2b6777;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 @media (max-width: 768px) {
   .palette-container {
     grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   }
-}
-
-/* Brand */
-.brand {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1rem;
-  letter-spacing: 4px;
-  color: #2b6777;
-  margin-bottom: 0.4rem;
+  .export-group {
+    margin-left: 0;
+  }
 }
